@@ -1,0 +1,126 @@
+Do NOT redesign or rebuild the application. Only improve and extend the existing ReceiptBud app while preserving all current functionality and styling.
+
+## UI Improvements
+
+1. Fix every button that is not perfectly centered.
+2. Ensure all icons and text inside buttons are vertically and horizontally centered.
+3. Fix buttons that are cut off or partially hidden.
+4. Make every card and container responsive on all screen sizes.
+5. Add proper padding and margins throughout the app.
+6. Ensure no UI element overlaps the bottom navigation bar.
+7. Add enough bottom padding so users can scroll past the last element without it being hidden behind the bottom navigation.
+8. Make every page fully scrollable where needed.
+9. Check every screen for overflow issues and fix them.
+10. Make all cards have consistent spacing and alignment.
+
+## Receipt Scanner Improvements
+
+Expand the receipt scanner so it supports multiple receipt types.
+
+Users should be able to:
+
+• Take a photo using the camera.
+• Upload a photo from the gallery.
+• Upload a screenshot of a digital receipt.
+• Upload a receipt downloaded from an email.
+• Drag and drop an image on desktop.
+
+The AI should automatically detect the receipt format and process it correctly.
+
+## Language Support
+
+Automatically detect the language of every receipt without requiring the user to choose one.
+
+Support all languages available through the AI model.
+
+## Currency Support
+
+Automatically detect and correctly process receipts using different currencies.
+
+Examples include:
+
+USD
+EUR
+GBP
+EGP
+SAR
+AED
+KWD
+QAR
+BHD
+OMR
+TRY
+JPY
+CNY
+KRW
+INR
+CAD
+AUD
+CHF
+SEK
+NOK
+DKK
+PLN
+MXN
+BRL
+
+The AI should recognize the currency symbol or abbreviation automatically.
+
+Display the detected currency clearly.
+
+Store the original currency with each receipt.
+
+If exchange rates are available, allow optional conversion into the user's preferred currency while preserving the original amount.
+
+## Subscription Tracker
+
+Create a new feature called "Subscriptions."
+
+Users can manually add subscriptions.
+
+Each subscription should include:
+
+• App or service name
+• Subscription icon (if available)
+• Monthly or yearly billing
+• Price
+• Currency
+• Renewal date
+• Category
+• Notes
+
+The app should automatically calculate the next renewal date.
+
+Users should be able to edit, delete, pause, or cancel subscriptions.
+
+## Reminder System
+
+When a subscription renewal date is approaching:
+
+• Show an in-app popup reminder.
+• Show a notification badge.
+• Display the subscription on the Home dashboard.
+• Show reminders 7 days before, 3 days before, 1 day before, and on the renewal day.
+
+Allow users to customize reminder timing.
+
+## Dashboard
+
+Add a "Upcoming Payments" card showing:
+
+• Subscription name
+• Renewal date
+• Amount
+• Days remaining
+
+Allow tapping the card to open the subscription.
+
+## Code Quality
+
+Do not remove any existing functionality.
+
+Only improve the current project.
+
+Maintain the existing design language.
+
+Ensure all new features are responsive, animated, and consistent with the ReceiptBud theme.

@@ -1,0 +1,85 @@
+Do NOT redesign or rebuild the application. Only fix and improve the existing ReceiptBud app while preserving all current features and styling.
+
+## 1. Receipt History - Filter Button
+
+The Filter button currently does nothing.
+
+Implement a fully functional filter system.
+
+Users should be able to filter receipts by:
+- Date
+- Store
+- Category
+- Currency
+- Payment Method
+- Amount (Minimum and Maximum)
+- Receipt Type (Physical, Digital Screenshot, Email Receipt)
+
+The filter should instantly update the receipt list.
+
+Add a "Clear Filters" button.
+
+Remember the last selected filters until they are cleared.
+
+## 2. Receipt History - Date Button
+
+The Date button beside the Filter button currently has no functionality.
+
+Implement a working sorting system.
+
+Allow users to sort by:
+
+- Newest First
+- Oldest First
+- Highest Amount
+- Lowest Amount
+- Store Name (A-Z)
+- Store Name (Z-A)
+
+The selected sorting option should remain active until changed.
+
+## 3. Budget Page Alignment
+
+On the Budgets page, the "Create New Budget" card is not aligned correctly.
+
+Fix the layout so it is perfectly centered both horizontally and vertically within its section.
+
+It should match the spacing and alignment of all other cards.
+
+Ensure it remains centered on:
+
+- Mobile
+- Tablet
+- Desktop
+
+No matter the screen size.
+
+## 4. Responsive Layout Improvements
+
+Review every page in the application for alignment issues.
+
+Fix:
+- Uneven spacing
+- Misaligned cards
+- Buttons that are not centered
+- Overflowing text
+- Elements touching screen edges
+- Components hidden behind the bottom navigation
+- Inconsistent margins and padding
+
+## 5. General Quality Check
+
+Perform a complete UI and UX audit of the application.
+
+Find and fix:
+- Buttons that do nothing
+- Missing click handlers
+- Broken navigation
+- Placeholder components
+- Layout inconsistencies
+- Visual bugs
+- Animation glitches
+
+Every visible button, icon, menu item, filter, and action in the app should perform its intended function.
+
+Maintain the existing ReceiptBud design language, animations, colors, and styling. Do not redesign the app—only improve and complete the existing implementation.

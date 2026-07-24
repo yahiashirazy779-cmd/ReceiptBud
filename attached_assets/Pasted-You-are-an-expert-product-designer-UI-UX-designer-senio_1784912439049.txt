@@ -1,0 +1,597 @@
+You are an expert product designer, UI/UX designer, senior full-stack engineer, AI engineer, and startup founder.
+
+Your mission is to build a COMPLETE production-ready web application called ReceiptBud.
+
+This is NOT a prototype or demo. Build it like a real startup product with clean architecture, modern UI, responsive design, and scalable code.
+
+Goal
+
+ReceiptBud is an AI-powered financial assistant that helps users understand and improve their spending by scanning shopping receipts.
+
+The app should feel like a friendly assistant, not a boring budgeting tool.
+
+The mascot is Bud, a small floating robot that guides users through the app and makes budgeting fun.
+
+⸻
+
+Technology
+
+Use the best technologies supported by Replit.
+
+Frontend:
+
+* HTML
+* CSS
+* JavaScript
+
+Backend:
+
+* Node.js + Express
+
+Database:
+
+* Choose the best option (SQLite for development is acceptable, but structure the project so it can later use Supabase or Firebase).
+
+Authentication:
+
+* Secure user accounts with password hashing.
+
+The project must be organized into clean folders and modular files.
+
+⸻
+
+Design Style
+
+The app should look premium.
+
+Style:
+
+* Futuristic
+* Clean
+* Minimal
+* Friendly
+* Fun
+* Rounded
+* Glassmorphism where appropriate
+* Soft shadows
+* Smooth animations
+* Floating cards
+* Micro interactions
+* Mobile first
+* Desktop responsive
+
+Everything should feel polished.
+
+⸻
+
+Colors
+
+Primary
+
+Emerald Green
+
+#0F9D58
+
+Use for:
+Buttons
+Highlights
+Graphs
+Icons
+Brand
+
+Secondary
+
+Slate Gray
+
+#4A5568
+
+Use for:
+Navigation
+Text
+Borders
+
+Background
+
+Soft Off White
+
+#F7FAFC
+
+⸻
+
+Splash Screen
+
+Animated ReceiptBud logo.
+
+Robot Bud floats into the screen.
+
+Loading animation.
+
+Transition into Login.
+
+⸻
+
+Authentication
+
+Sign Up
+
+Fields:
+
+Name
+
+Email
+
+Password
+
+Confirm Password
+
+Validation
+
+Login
+
+Email
+
+Password
+
+Remember Me
+
+Forgot Password
+
+Smooth page transitions.
+
+⸻
+
+Welcome Animation
+
+Only after the first login or signup.
+
+Bud waves.
+
+Animation.
+
+Message:
+
+“Hello, (User Name)!
+
+I’m Bud 🤖
+
+I’m here to help you spend smarter, save more, and understand your money.”
+
+Then smoothly transition into the home page.
+
+Every future opening simply shows
+
+Hello, (User Name)
+
+at the top.
+
+⸻
+
+First Time Tutorial
+
+Interactive onboarding.
+
+Pages:
+
+Welcome
+
+Scan Receipts
+
+Track Spending
+
+Budgets
+
+Chat with Bud
+
+Achievements
+
+Insights
+
+Each page has:
+
+Animation
+
+Illustration
+
+Next
+
+Back
+
+Skip
+
+Finish
+
+⸻
+
+Home Page
+
+Header
+
+Hello, User
+
+Profile picture
+
+Notifications
+
+Settings
+
+Large Quick Action buttons.
+
+Buttons:
+
+📷 Scan Receipt
+
+🧾 History
+
+💰 Budgets
+
+📈 Analytics
+
+🤖 Chat with Bud
+
+🏆 Achievements
+
+⚙ Settings
+
+⸻
+
+Receipt Scanner
+
+Allow:
+
+Camera
+
+Upload Image
+
+Drag & Drop
+
+Beautiful scanning animation.
+
+After upload,
+
+AI extracts:
+
+Store Name
+
+Date
+
+Time
+
+Items
+
+Prices
+
+Taxes
+
+Discounts
+
+Payment Method
+
+Total
+
+Return structured data.
+
+⸻
+
+AI Analysis
+
+Automatically categorize every item.
+
+Examples:
+
+Groceries
+
+Transport
+
+Entertainment
+
+Restaurants
+
+Bills
+
+Electronics
+
+Shopping
+
+Education
+
+Pets
+
+Travel
+
+Health
+
+Subscriptions
+
+Other
+
+Generate intelligent insights.
+
+Examples:
+
+You spent 41% on groceries.
+
+Restaurant spending increased this month.
+
+This is your largest purchase this week.
+
+You stayed inside your budget.
+
+You’re close to your spending limit.
+
+⸻
+
+Dashboard
+
+Animated Spending Meter
+
+Switch between
+
+Week
+
+Month
+
+Year
+
+Charts:
+
+Pie Chart
+
+Line Chart
+
+Bar Chart
+
+Cards:
+
+Total Spending
+
+Largest Expense
+
+Most Visited Store
+
+Budget Remaining
+
+Average Receipt
+
+Savings
+
+⸻
+
+Swipeable Dashboard Cards
+
+Allow horizontal swiping.
+
+Cards include:
+
+Monthly Spending
+
+Budget Progress
+
+Recent Purchases
+
+Inflation Tracker
+
+Subscriptions
+
+Goals
+
+Upcoming Bills
+
+Achievements
+
+⸻
+
+Receipt History
+
+Search
+
+Sort
+
+Filter
+
+Open receipt
+
+Delete receipt
+
+Favorite receipt
+
+Warranty storage
+
+Export PDF
+
+Export CSV
+
+⸻
+
+Bud AI Assistant
+
+Chat screen.
+
+Bud answers questions like:
+
+Where did my money go?
+
+Can I save 500 EGP?
+
+Am I overspending?
+
+Which category costs me the most?
+
+Can I afford a laptop?
+
+Bud responds naturally using the user’s receipt history.
+
+⸻
+
+Smart Features
+
+Budget planning
+
+Saving goals
+
+Subscription detector
+
+Inflation tracker
+
+Price comparison
+
+Duplicate purchase detector
+
+Weekly reports
+
+Monthly reports
+
+Bill reminders
+
+Shopping trends
+
+Favorite stores
+
+Notifications
+
+⸻
+
+Achievements
+
+Gamify the experience.
+
+Examples:
+
+First Receipt
+
+Stayed Under Budget
+
+Saved 100 EGP
+
+7 Day Streak
+
+30 Day Streak
+
+50 Receipts
+
+100 Receipts
+
+XP
+
+Levels
+
+Coins
+
+Confetti
+
+Robot celebrations
+
+⸻
+
+Settings
+
+Profile
+
+Theme
+
+Dark Mode
+
+Currency
+
+Language
+
+Notifications
+
+Privacy
+
+Delete Account
+
+⸻
+
+Accessibility
+
+Large buttons
+
+Keyboard navigation
+
+High contrast
+
+Readable typography
+
+Touch friendly
+
+ARIA labels
+
+⸻
+
+Animations
+
+Everything should animate smoothly.
+
+Cards
+
+Charts
+
+Buttons
+
+Robot
+
+Scanning
+
+Loading
+
+Transitions
+
+Confetti
+
+⸻
+
+Code Quality
+
+Use clean folder structure.
+
+Comment important code.
+
+Avoid duplicated code.
+
+Optimize performance.
+
+Write maintainable code.
+
+⸻
+
+Deployment
+
+Prepare the project so it can be deployed directly from Replit and later to GitHub or Vercel.
+
+⸻
+
+AI Integration
+
+Create the app so that AI integration is modular.
+
+Create a dedicated AI service file that can later connect to:
+
+* Anthropic Claude API
+* OpenAI API
+* Google Gemini API
+
+For now, create the integration points and placeholder functions if an API key has not been added.
+
+⸻
+
+Begin building the project immediately.
+
+Create all folders and files.
+
+Build every screen.
+
+Implement navigation.
+
+Implement authentication.
+
+Implement the responsive UI.
+
+Implement animations.
+
+Implement placeholder AI integration.
+
+Implement charts.
+
+Implement the robot assistant.
+
+Continue until the application is complete rather than stopping after one page.

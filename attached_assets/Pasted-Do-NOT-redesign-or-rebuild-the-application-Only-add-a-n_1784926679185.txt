@@ -1,0 +1,103 @@
+Do NOT redesign or rebuild the application. Only add a new feature while preserving all existing functionality, styling, and animations.
+
+## New Feature: Manual Receipt Entry
+
+Add a new option called **"Add Receipt Manually"** alongside the existing receipt scanning options.
+
+When selected, open a clean, responsive modal or page where the user can manually enter receipt information.
+
+The form should include:
+
+### Basic Information
+- Store Name
+- Receipt Date
+- Receipt Time (optional)
+- Currency (automatically set to the user's default but editable)
+- Payment Method (Cash, Credit Card, Debit Card, Apple Pay, Google Pay, Bank Transfer, Other)
+- Receipt Type (Physical, Digital, Email, Manual)
+
+### Items Purchased
+Allow the user to add unlimited items.
+
+Each item should contain:
+- Item Name
+- Category
+- Quantity
+- Unit Price
+- Total Price
+
+Include:
+- Add Item button
+- Edit Item
+- Delete Item
+
+Automatically calculate the item total when quantity or price changes.
+
+### Receipt Totals
+Fields:
+- Subtotal
+- Tax
+- Discount
+- Shipping/Delivery Fee (optional)
+- Tip (optional)
+- Grand Total
+
+Automatically calculate the Grand Total.
+
+### Extra Information
+- Notes
+- Receipt Tags
+- Attach an optional receipt image later if desired.
+
+### Categories
+
+Provide built-in categories such as:
+- Groceries
+- Restaurants
+- Transport
+- Shopping
+- Entertainment
+- Health
+- Education
+- Utilities
+- Travel
+- Electronics
+- Home
+- Pets
+- Other
+
+Allow users to create custom categories.
+
+### Validation
+
+- Required fields should be validated.
+- Prevent empty receipts.
+- Highlight missing information.
+- Show success confirmation after saving.
+
+### Integration
+
+After saving:
+
+- Save the receipt exactly like scanned receipts.
+- Add it to Receipt History.
+- Update spending analytics.
+- Update budgets.
+- Update charts.
+- Update "Spent This Month."
+- Update AI insights.
+- Preserve the selected currency.
+- Include the receipt in search, filters, and sorting.
+
+Manual receipts should behave exactly like AI-scanned receipts throughout the app.
+
+### User Experience
+
+- Keep the design consistent with ReceiptBud.
+- Match the existing colour palette and animations.
+- Make the form responsive for desktop, tablet, and mobile.
+- Auto-save drafts while the user is typing.
+- Show a loading animation while saving.
+- Display a success message once the receipt has been added.
+
+Do not remove or modify any existing features. Simply integrate this new manual receipt feature seamlessly into the current application.

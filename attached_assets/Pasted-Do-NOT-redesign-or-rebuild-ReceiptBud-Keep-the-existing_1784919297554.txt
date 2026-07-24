@@ -1,0 +1,234 @@
+Do NOT redesign or rebuild ReceiptBud. Keep the existing design language, colors, animations, branding, and functionality. Only improve and polish the current application.
+
+## PRIORITY 1 - Fix Responsive Layout
+
+Completely inspect the application on:
+
+• iPhone SE
+• iPhone 13/14/15
+• Android phones
+• Tablets
+• Desktop
+
+Fix every responsive issue.
+
+Nothing should ever be cut off or overlap.
+
+No text should leave its container.
+
+No card should overflow.
+
+No buttons should be hidden.
+
+Everything must resize correctly.
+
+---
+
+## PRIORITY 2 - Fix Hidden Text
+
+There are several statistics inside the spending card that are partially hidden.
+
+Examples include:
+
+• "Looking good"
+• "0 receipts"
+• Budget information
+• Right-side statistics
+
+Make every label fully visible.
+
+Increase padding.
+
+Increase spacing.
+
+Reduce font size slightly when necessary.
+
+Allow elements to wrap correctly instead of overflowing.
+
+Nothing should ever be clipped.
+
+---
+
+## PRIORITY 3 - Scroll Improvements
+
+The fixed bottom navigation currently covers content.
+
+Fix this everywhere.
+
+Requirements:
+
+• Users must be able to scroll below the final section.
+• Add safe bottom spacing equal to the navigation bar height plus extra margin.
+• Add bottom padding to every page.
+• Ensure the last card can always be fully viewed.
+• Respect iPhone Safe Area Insets.
+• Make scrolling smooth.
+
+---
+
+## PRIORITY 4 - Home Header Redesign
+
+The header currently feels empty.
+
+Without changing the overall ReceiptBud design, redesign it into a premium dashboard.
+
+Include:
+
+• Friendly greeting
+• User profile picture
+• Notification icon
+• Settings shortcut
+• Bud robot avatar
+• Current date
+• Optional motivational message
+
+Example:
+
+Hello, Yahia 👋
+
+Tuesday, July 28
+
+"You're doing great! You spent 12% less than last week."
+
+Add subtle animations.
+
+Use more visual hierarchy.
+
+Make it feel like Apple Wallet, Revolut, Notion and Stripe.
+
+---
+
+## PRIORITY 5 - Spending Card Improvements
+
+Redesign the main spending card.
+
+Keep the same information but improve layout.
+
+Display:
+
+Monthly Spending
+
+Budget Remaining
+
+Percentage Used
+
+Trend Indicator
+
+Receipt Count
+
+Largest Expense
+
+Savings This Month
+
+Current Currency
+
+Everything should fit comfortably without overlapping.
+
+Add better spacing.
+
+Improve alignment.
+
+---
+
+## PRIORITY 6 - Better Card Design
+
+Every card should have:
+
+More consistent padding
+
+Larger border radius
+
+Slightly stronger border
+
+Better shadow
+
+More spacing between sections
+
+Equal spacing on all sides
+
+Perfect alignment
+
+---
+
+## PRIORITY 7 - Quick Actions
+
+Ensure every quick action card:
+
+Has identical width
+
+Has identical height
+
+Perfectly centered icon
+
+Perfectly centered text
+
+Consistent spacing
+
+No text clipping
+
+---
+
+## PRIORITY 8 - Navigation
+
+Keep the floating camera button.
+
+Improve spacing between navigation icons.
+
+Increase touch area.
+
+Respect Safe Area on iPhones.
+
+Ensure nothing overlaps system UI.
+
+---
+
+## PRIORITY 9 - Dashboard Polish
+
+Add additional dashboard widgets:
+
+• Monthly Budget Progress
+• Upcoming Subscription
+• Last Receipt
+• Spending Streak
+• Weekly Summary
+• Today's Financial Tip from Bud
+
+These should appear naturally without making the page crowded.
+
+---
+
+## PRIORITY 10 - Professional Finishing
+
+Review every screen.
+
+Look for:
+
+Misaligned icons
+
+Misaligned text
+
+Overflow
+
+Uneven padding
+
+Broken spacing
+
+Different corner radii
+
+Different button heights
+
+Different font sizes
+
+Inconsistent shadows
+
+Fix everything.
+
+The final UI should feel like a polished production app that could be released on the App Store.
+
+Never remove existing features.
+
+Never replace working functionality.
+
+Only improve the current implementation.
+
+Before making changes, analyze the entire UI and then systematically improve every page while maintaining the ReceiptBud identity.

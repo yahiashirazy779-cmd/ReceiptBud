@@ -1,0 +1,1029 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: ReceiptBud API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: receipts
+    description: Receipt management
+  - name: budgets
+    description: Budget management
+  - name: dashboard
+    description: Dashboard and analytics
+  - name: achievements
+    description: User achievements and gamification
+  - name: users
+    description: User profile
+  - name: gemini
+    description: Gemini AI chat and image operations
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  # ── Receipts ──────────────────────────────────────────────────────────────
+  /receipts:
+    get:
+      operationId: listReceipts
+      tags: [receipts]
+      summary: List receipts
+      parameters:
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: favorite
+          in: query
+          schema:
+            type: boolean
+        - name: startDate
+          in: query
+          schema:
+            type: string
+        - name: endDate
+          in: query
+          schema:
+            type: string
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of receipts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Receipt"
+    post:
+      operationId: createReceipt
+      tags: [receipts]
+      summary: Create a receipt manually or store scanned data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReceiptInput"
+      responses:
+        "201":
+          description: Created receipt
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Receipt"
+
+  /receipts/scan:
+    post:
+      operationId: scanReceipt
+      tags: [receipts]
+      summary: Extract receipt data from an image using AI (base64)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReceiptScanInput"
+      responses:
+        "200":
+          description: Extracted receipt data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReceiptScanResult"
+
+  /receipts/{id}:
+    get:
+      operationId: getReceipt
+      tags: [receipts]
+      summary: Get a receipt by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Receipt
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Receipt"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+    patch:
+      operationId: updateReceipt
+      tags: [receipts]
+      summary: Update a receipt
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReceiptUpdate"
+      responses:
+        "200":
+          description: Updated receipt
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Receipt"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+    delete:
+      operationId: deleteReceipt
+      tags: [receipts]
+      summary: Delete a receipt
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+
+  /receipts/{id}/favorite:
+    patch:
+      operationId: toggleReceiptFavorite
+      tags: [receipts]
+      summary: Toggle receipt favorite status
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Updated receipt
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Receipt"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+
+  # ── Budgets ───────────────────────────────────────────────────────────────
+  /budgets:
+    get:
+      operationId: listBudgets
+      tags: [budgets]
+      summary: List all budgets
+      responses:
+        "200":
+          description: List of budgets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Budget"
+    post:
+      operationId: createBudget
+      tags: [budgets]
+      summary: Create a budget
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BudgetInput"
+      responses:
+        "201":
+          description: Created budget
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Budget"
+
+  /budgets/{id}:
+    patch:
+      operationId: updateBudget
+      tags: [budgets]
+      summary: Update a budget
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BudgetUpdate"
+      responses:
+        "200":
+          description: Updated budget
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Budget"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+    delete:
+      operationId: deleteBudget
+      tags: [budgets]
+      summary: Delete a budget
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+
+  # ── Dashboard ─────────────────────────────────────────────────────────────
+  /dashboard/summary:
+    get:
+      operationId: getDashboardSummary
+      tags: [dashboard]
+      summary: Get spending summary stats
+      parameters:
+        - name: period
+          in: query
+          schema:
+            type: string
+            enum: [week, month, year]
+      responses:
+        "200":
+          description: Dashboard summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardSummary"
+
+  /dashboard/spending-by-category:
+    get:
+      operationId: getSpendingByCategory
+      tags: [dashboard]
+      summary: Get spending breakdown by category
+      parameters:
+        - name: period
+          in: query
+          schema:
+            type: string
+            enum: [week, month, year]
+      responses:
+        "200":
+          description: Category breakdown
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CategorySpending"
+
+  /dashboard/spending-over-time:
+    get:
+      operationId: getSpendingOverTime
+      tags: [dashboard]
+      summary: Get spending trend over time
+      parameters:
+        - name: period
+          in: query
+          schema:
+            type: string
+            enum: [week, month, year]
+      responses:
+        "200":
+          description: Spending trend data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SpendingDataPoint"
+
+  # ── Achievements ──────────────────────────────────────────────────────────
+  /achievements:
+    get:
+      operationId: listAchievements
+      tags: [achievements]
+      summary: List user achievements
+      responses:
+        "200":
+          description: List of achievements
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Achievement"
+
+  # ── User Profile ──────────────────────────────────────────────────────────
+  /users/me:
+    get:
+      operationId: getMyProfile
+      tags: [users]
+      summary: Get current user profile
+      responses:
+        "200":
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+    patch:
+      operationId: updateMyProfile
+      tags: [users]
+      summary: Update current user profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserProfileUpdate"
+      responses:
+        "200":
+          description: Updated profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+
+  # ── Gemini AI ─────────────────────────────────────────────────────────────
+  /gemini/conversations:
+    get:
+      operationId: listGeminiConversations
+      tags: [gemini]
+      summary: List all conversations
+      responses:
+        "200":
+          description: List of conversations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeminiConversation"
+    post:
+      operationId: createGeminiConversation
+      tags: [gemini]
+      summary: Create a new conversation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GeminiConversationInput"
+      responses:
+        "201":
+          description: Created conversation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GeminiConversation"
+
+  /gemini/conversations/{id}:
+    get:
+      operationId: getGeminiConversation
+      tags: [gemini]
+      summary: Get conversation with messages
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Conversation with messages
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GeminiConversationWithMessages"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GeminiError"
+    delete:
+      operationId: deleteGeminiConversation
+      tags: [gemini]
+      summary: Delete a conversation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GeminiError"
+
+  /gemini/conversations/{id}/messages:
+    get:
+      operationId: listGeminiMessages
+      tags: [gemini]
+      summary: List messages in a conversation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of messages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeminiMessage"
+    post:
+      operationId: sendGeminiMessage
+      tags: [gemini]
+      summary: Send a message and receive an AI response (SSE stream)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GeminiMessageInput"
+      responses:
+        "200":
+          description: SSE stream of assistant response chunks
+          content:
+            text/event-stream: {}
+
+  /gemini/generate-image:
+    post:
+      operationId: generateGeminiImage
+      tags: [gemini]
+      summary: Generate an image from a text prompt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GeminiImageInput"
+      responses:
+        "200":
+          description: Generated image data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GeminiImageOutput"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+
+    # ── Receipt schemas ──────────────────────────────────────────────────────
+    ReceiptItem:
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: number
+        quantity:
+          type: ["number", "null"]
+        category:
+          type: ["string", "null"]
+      required:
+        - name
+        - price
+
+    Receipt:
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: string
+        storeName:
+          type: string
+        date:
+          type: string
+        total:
+          type: number
+        tax:
+          type: ["number", "null"]
+        discount:
+          type: ["number", "null"]
+        paymentMethod:
+          type: ["string", "null"]
+        category:
+          type: string
+        notes:
+          type: ["string", "null"]
+        imageBase64:
+          type: ["string", "null"]
+        isFavorite:
+          type: boolean
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ReceiptItem"
+        currency:
+          type: string
+          default: "USD"
+        aiInsight:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - userId
+        - storeName
+        - date
+        - total
+        - category
+        - currency
+        - isFavorite
+        - items
+        - createdAt
+        - updatedAt
+
+    ReceiptInput:
+      type: object
+      properties:
+        storeName:
+          type: string
+        date:
+          type: string
+        total:
+          type: number
+        tax:
+          type: number
+        discount:
+          type: number
+        paymentMethod:
+          type: string
+        category:
+          type: string
+        notes:
+          type: string
+        imageBase64:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ReceiptItem"
+        currency:
+          type: string
+        aiInsight:
+          type: string
+      required:
+        - storeName
+        - date
+        - total
+        - category
+        - items
+
+    ReceiptUpdate:
+      type: object
+      properties:
+        storeName:
+          type: string
+        date:
+          type: string
+        total:
+          type: number
+        tax:
+          type: number
+        discount:
+          type: number
+        paymentMethod:
+          type: string
+        category:
+          type: string
+        notes:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ReceiptItem"
+
+    ReceiptScanInput:
+      type: object
+      properties:
+        imageBase64:
+          type: string
+        mimeType:
+          type: string
+      required:
+        - imageBase64
+
+    ReceiptScanResult:
+      type: object
+      properties:
+        storeName:
+          type: string
+        date:
+          type: string
+        total:
+          type: number
+        tax:
+          type: ["number", "null"]
+        discount:
+          type: ["number", "null"]
+        paymentMethod:
+          type: ["string", "null"]
+        category:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ReceiptItem"
+        aiInsight:
+          type: ["string", "null"]
+      required:
+        - storeName
+        - date
+        - total
+        - category
+        - items
+
+    # ── Budget schemas ───────────────────────────────────────────────────────
+    Budget:
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: string
+        category:
+          type: string
+        limitAmount:
+          type: number
+        period:
+          type: string
+          enum: [week, month, year]
+        spent:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - userId
+        - category
+        - limitAmount
+        - period
+        - spent
+        - createdAt
+
+    BudgetInput:
+      type: object
+      properties:
+        category:
+          type: string
+        limitAmount:
+          type: number
+        period:
+          type: string
+          enum: [week, month, year]
+      required:
+        - category
+        - limitAmount
+        - period
+
+    BudgetUpdate:
+      type: object
+      properties:
+        category:
+          type: string
+        limitAmount:
+          type: number
+        period:
+          type: string
+          enum: [week, month, year]
+
+    # ── Dashboard schemas ────────────────────────────────────────────────────
+    DashboardSummary:
+      type: object
+      properties:
+        totalSpending:
+          type: number
+        receiptCount:
+          type: integer
+        largestExpense:
+          type: number
+        averageReceipt:
+          type: number
+        topCategory:
+          type: string
+        budgetRemaining:
+          type: number
+        savings:
+          type: number
+        mostVisitedStore:
+          type: string
+      required:
+        - totalSpending
+        - receiptCount
+        - largestExpense
+        - averageReceipt
+        - topCategory
+        - budgetRemaining
+        - savings
+        - mostVisitedStore
+
+    CategorySpending:
+      type: object
+      properties:
+        category:
+          type: string
+        amount:
+          type: number
+        percentage:
+          type: number
+        count:
+          type: integer
+      required:
+        - category
+        - amount
+        - percentage
+        - count
+
+    SpendingDataPoint:
+      type: object
+      properties:
+        label:
+          type: string
+        amount:
+          type: number
+      required:
+        - label
+        - amount
+
+    # ── Achievement schemas ──────────────────────────────────────────────────
+    Achievement:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        icon:
+          type: string
+        unlocked:
+          type: boolean
+        unlockedAt:
+          type: ["string", "null"]
+          format: date-time
+        xp:
+          type: integer
+        level:
+          type: integer
+      required:
+        - id
+        - title
+        - description
+        - icon
+        - unlocked
+        - xp
+        - level
+
+    # ── User profile schemas ─────────────────────────────────────────────────
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        currency:
+          type: string
+        language:
+          type: string
+        theme:
+          type: string
+        notificationsEnabled:
+          type: boolean
+        totalXp:
+          type: integer
+        level:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - email
+        - currency
+        - language
+        - theme
+        - notificationsEnabled
+        - totalXp
+        - level
+        - createdAt
+
+    UserProfileUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        currency:
+          type: string
+        language:
+          type: string
+        theme:
+          type: string
+        notificationsEnabled:
+          type: boolean
+
+    # ── Gemini schemas ───────────────────────────────────────────────────────
+    GeminiConversation:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - title
+        - createdAt
+
+    GeminiMessage:
+      type: object
+      properties:
+        id:
+          type: integer
+        conversationId:
+          type: integer
+        role:
+          type: string
+        content:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - conversationId
+        - role
+        - content
+        - createdAt
+
+    GeminiConversationInput:
+      type: object
+      properties:
+        title:
+          type: string
+      required:
+        - title
+
+    GeminiMessageInput:
+      type: object
+      properties:
+        content:
+          type: string
+      required:
+        - content
+
+    GeminiConversationWithMessages:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        messages:
+          type: array
+          items:
+            $ref: "#/components/schemas/GeminiMessage"
+      required:
+        - id
+        - title
+        - createdAt
+        - messages
+
+    GeminiImageInput:
+      type: object
+      properties:
+        prompt:
+          type: string
+      required:
+        - prompt
+
+    GeminiImageOutput:
+      type: object
+      properties:
+        b64_json:
+          type: string
+        mimeType:
+          type: string
+      required:
+        - b64_json
+        - mimeType
+
+    GeminiError:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error

@@ -1,0 +1,2 @@
+- [Receipt currency field](currency-field.md) — currency stored per-receipt; utility at src/lib/currency.ts; Zod schemas are hand-edited (no codegen script).
+- [Production audit findings](production-audit.md) — full list of bugs fixed in the readiness audit; includes the critical subscriptions crash pattern and what was intentionally left as-is.

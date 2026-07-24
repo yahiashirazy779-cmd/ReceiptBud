@@ -1,0 +1,146 @@
+Do NOT rebuild the application.
+
+Only improve the existing ReceiptBud project while keeping the current design, animations, pages, and functionality.
+
+## 1. Multi-language Receipt Scanning (High Priority)
+
+Upgrade the AI receipt scanner so it can accurately recognize receipts written in multiple languages.
+
+Supported languages should include at minimum:
+
+- English
+- Arabic
+- French
+- Spanish
+- German
+- Italian
+- Portuguese
+- Turkish
+- Hindi
+- Chinese
+- Japanese
+
+The app should automatically detect the receipt language without asking the user.
+
+After scanning:
+
+- Read every item correctly regardless of language.
+- Translate the item names into the user's selected app language.
+- Keep the original receipt text available if the user wants to view it.
+- Correct OCR mistakes whenever possible using AI.
+- Categorize products correctly even when written in another language.
+- Extract:
+  - Store name
+  - Date
+  - Time
+  - Currency
+  - Taxes
+  - Discounts
+  - Payment method
+  - Total
+  - Every purchased item
+
+If multiple currencies appear, recognize them automatically.
+
+The AI should be able to understand supermarkets, restaurants, pharmacies, gas stations, electronics stores, and other receipt formats.
+
+## 2. Stronger UI
+
+Keep the same futuristic style but improve visual clarity.
+
+Make every card and section easier to distinguish.
+
+Increase border visibility slightly while keeping the premium design.
+
+For every card use:
+
+- slightly darker border
+- better contrast
+- soft shadow
+- rounded corners
+
+Cards should stand out more from the background without looking heavy.
+
+Improve spacing between sections.
+
+Improve readability.
+
+## 3. Better Receipt Results
+
+After scanning, show:
+
+Receipt Summary
+
+Store
+
+Date
+
+Total
+
+Savings
+
+Categories
+
+Items
+
+AI Insights
+
+Receipt Confidence Score
+
+Detected Language
+
+Detected Currency
+
+Estimated OCR Accuracy
+
+## 4. Loading Experience
+
+While AI analyzes the receipt:
+
+Show an animated scanning line.
+
+Robot Bud should say messages like:
+
+"Reading your receipt..."
+
+"Finding your purchases..."
+
+"Analyzing your spending..."
+
+"Almost done..."
+
+Instead of showing a boring loading spinner.
+
+## 5. Better Error Handling
+
+If the receipt is blurry:
+
+Ask the user to retake it.
+
+If text is partially unreadable:
+
+Continue extracting what is readable.
+
+If AI is unsure:
+
+Highlight uncertain items and allow manual correction.
+
+## 6. Performance
+
+Optimize receipt processing.
+
+Reduce loading time.
+
+Compress uploaded images before sending them.
+
+Cache previous scans.
+
+## IMPORTANT
+
+Do not redesign the application.
+
+Do not remove existing features.
+
+Only improve the current ReceiptBud project while keeping the same theme, animations, and layout.
+
+Make these changes throughout the entire application and ensure everything remains responsive on mobile, tablet, and desktop.
